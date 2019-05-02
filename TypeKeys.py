@@ -9,9 +9,6 @@ postmemesSubList = ["d", "e", "n", "m", "r"]
 running = 0
 
 
-
-
-
 print("Click into Discord now!")
 print("Starting in:")
 print("5")
