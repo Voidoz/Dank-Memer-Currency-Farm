@@ -42,7 +42,18 @@ while running == 1:
 
     time.sleep(0.5)
 
-    for char in "pls postmemes {}".format(postmemeSub):
+    for char in "pls postmemes":
+
+            keyboard.press(char)
+            keyboard.release(char)
+            time.sleep(0.12)
+
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+
+    time.sleep(0.5)
+
+    for char in "{}".format(postmemeSub):
 
             keyboard.press(char)
             keyboard.release(char)
