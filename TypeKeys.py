@@ -1,10 +1,15 @@
 #imports
 from pynput.keyboard import Key, Controller
 import time
+import random
 
 
 keyboard = Controller()
+postmemesSubList = ["d", "e", "n", "m", "r"]
 running = 0
+
+
+
 
 
 print("Click into Discord now!")
@@ -28,10 +33,23 @@ else:
 
 
 while running == 1:
+    postmemeSub = random.choice(postmemesSubList)
+
     for char in "pls beg":
         keyboard.press(char)
         keyboard.release(char)
         time.sleep(0.12)
+
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+
+    time.sleep(0.5)
+
+    for char in "pls postmemes {}".format(postmemeSub):
+
+            keyboard.press(char)
+            keyboard.release(char)
+            time.sleep(0.12)
 
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
