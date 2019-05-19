@@ -100,7 +100,7 @@ def beginProgram(killed):
         
         checkKillSwitch()
 
-        time.sleep(10)
+        time.sleep(60)
 
 checkKillSwitch()
 
