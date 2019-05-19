@@ -12,12 +12,13 @@ html = urllib.request.urlopen("https://pastebin.com/raw/NUMtwjAx").read().decode
 
 def checkKillSwitch():
     global killSwitchOn
+    html = urllib.request.urlopen("https://pastebin.com/raw/NUMtwjAx").read().decode()
     status = re.findall("KillSwitch1: (.*)", html) [-1]
     if status == "ON":
         killSwitchOn = 1
     elif status == "OFF":
         killSwitchOn = 0
-def beginProgram(running):
+def introProgram(running):
     print("Click into Discord now!")
     print("Starting in:")
     print("5")
@@ -34,12 +35,17 @@ def beginProgram(running):
 
     if running == 1:
         print("Program has started successfully and is typing!")
+        print("")
     else:
         print("An error occured preventing the program from starting.")
         input("Press any key to continue.")
-
-
-    while running == 1:
+def beginProgram(killed):
+    while killed == 0:
+        checkKillSwitch()
+        if killSwitchOn == 1:
+            print("The kill switch has been activated and you are no longer able to use this program until is has been deactivated. Please contact the developer for more information.")
+            input("Press any key to continue.")
+            break
         postmemeSub = random.choice(postmemesSubList)
 
         for char in "pls beg":
@@ -91,15 +97,18 @@ def beginProgram(running):
 
         keyboard.press(Key.enter)
         keyboard.release(Key.enter)
+        
+        checkKillSwitch()
 
-        time.sleep(60)
+        time.sleep(10)
 
 checkKillSwitch()
 
 if killSwitchOn == 0:
-    beginProgram(0)
+    introProgram(0)
+    beginProgram(killSwitchOn)
 elif killSwitchOn == 1:
-    print("The kill switch has been initiated and you are no longer able to use this program. Please contact the developer for more information.")
+    print("The kill switch has been activated and you are no longer able to use this program until is has been deactivated. Please contact the developer for more information.")
     input("Press any key to continue.")
 else:
     print("ERROR: Kill Switch Not Found!")
